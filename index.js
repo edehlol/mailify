@@ -1,9 +1,11 @@
 const express = require('express');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send("what's up gamers, we need to rise up fast!!");
-});
-// look at the underlying environment and see if there's a port assigned to us || run on port 5000 in development mode
+// tells passport that you want to authenticate users with Google
+passport.use(new GoogleStrategy());
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
